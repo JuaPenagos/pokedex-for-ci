@@ -5,25 +5,25 @@ on:
       - main
 
 jobs:
-  deploy:
+  deploy: 
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
+    steps: 
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v4
         with:
-          node-version: '14'
+          node-version: 18
       - name: Install dependencies
-        run: npm install --no-audit --no-fund --no-optional
+        run: npm ci
       - name: Lint
         run: npm run eslint
       - name: Build
         run: npm run build
       - name: Test
         run: npm test
-      - name: E2E tests
-        uses: cypress-io/github-action@v6
+      - name: Test e2e
+        uses: cypress-io/github-action@v6 
         with:
           command: npm run test:e2e
           start: npm run start-test
