@@ -21,8 +21,8 @@ jobs:
       - name: Test
         run: npm test
       - name: Test e2e
-        uses: cypress-io/github-action@v2 
+        uses: cypress-io/github-action@v6 
         with:
           command: npm run test:e2e
           start: npm run start-test
-          wait-on: http://localhost:4200
+          wait-on: 'npx wait-on --timeout 5000 http://localhost:3000'
